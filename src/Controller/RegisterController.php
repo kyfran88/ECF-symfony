@@ -14,44 +14,45 @@ use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
 class RegisterController extends AbstractController
 {  
+    
     private $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager){
-       $this->entityManager = $entityManager;
-       
+        $this->entityManager = $entityManager;
+
 }
 
     #[Route('/inscription', name: 'app_register')]
-    public function index(Request $request, UserPasswordHasherInterface $encoder ): Response
+    public function index(Request $request , 
+    UserPasswordHasherInterface $encoder ): Response
 {
+
+    $notification = null;
+
+    $user = new User();
+    $form = $this->createForm(RegisterType::class, $user);
+    $form ->handleRequest($request);
         
-        $notification = null;
+    
+    if ($form->isSubmitted() && $form->isValid()){
+        $user = $form->getData();
+        $user_find = $this->entityManager->getRepository(User::class)
+        ->findOneByEmail($user->getEmail());
 
-        $user = new User();
-        $form = $this->createForm(RegisterType::class, $user);
-        $form ->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()){
-
-            $user = $form->getData();
-            $user_find = $this->entityManager->getRepository(User::class)->findOneByEamil($user->getEmail());
-            {
-                
         if (!$user_find){
-
-                $password = $encoder->hashPassword($user ,$user ->getPassword());
-                $user ->getPassword($password);
-            }
+            
+            $password = $encoder->hashPassword($user ,$user ->getPassword());
+            $user ->setPassword($password);
         }
 
-            $this->entityManager->persist($user);
-            $this->entityManager->flush();
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
 
-            $notification = "Votre inscription s'est bien dérouler";
-        }else{
+        $notification = "Votre inscription s'est bien déroulée";
+    }else{
+        $notification = "L'email utilisé existe déja";
+    }
 
-            $notification = "Email utilisé existe déja";
-        }
 
 
         return $this->render('register/index.html.twig', [

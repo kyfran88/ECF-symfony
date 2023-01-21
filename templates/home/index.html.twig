@@ -5,26 +5,27 @@
 {% block body %}
 
 <section>
-<div class="container-fluid text-center">
+<div class="container-fluid d-flex text-center">
 {% for item in galerie %}
-  <div class="row">
+  <div class="row ">
     <div class="col">
       {{ item.titre }}
-         <img src="/images/{{ item.image }}"class="img-fluid img-images" alte="image">
-    </div>
-    <div class="col">
-      {{ item.titre }}
-         <img src="/images/{{ item.image }}"class="img-fluid img-images" alte="image">
-    </div>
-    <div class="col">
-      {{ item.titre }}
-         <img src="/images/{{ item.image }}"class="img-fluid img-images" alte="image">
+         <img src="/images/{{ item.image }}"class="img-fluid img-images" alte="image" style="max-width: auto; height: 90%;">
     </div>
   </div>
 {% endfor %}
 </div>
-</div>
 </section>
+
+<button type="button" class="btn btn-primary btn-lg mx-auto d-block" style="width: 700px; height: 100;">
+   <li class="nav-item">
+      <a class="nav-link" href="reservation">Reservation</a>
+   </li>
+</button>
+
+<br>
+</br>
+ 
 {% endblock %}
 
 
