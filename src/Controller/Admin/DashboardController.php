@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Horaires;
 use App\Entity\Galerie;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -25,8 +26,8 @@ class DashboardController extends AbstractDashboardController
         $url = $this->adminUrlGenerator
              ->setController(GalerieCrudController::class)
              ->generateUrl();
-        
-        return $this->redirect($url);
+             
+         return $this->redirect($url);
     }
 
     public function configureDashboard(): Dashboard
@@ -43,11 +44,11 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Create Galerie', 'fa fa-plus', Galerie::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToDashboard('show Galeries', 'fa fa-eye', Galerie::class)
         ]);
-              
-        yield MenuItem::subMenu('Utilisateurs', 'fa fa-bars')->setSubItems([
-            MenuItem::linkToCrud('Create User', 'fa fa-plus', User::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToDashboard('show Users', 'fa fa-eye', User::class)
-        ]);
+
+        yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-user', User::class);
+        yield MenuItem::linkToCrud('horaires', 'fa fa-clock', Horaires::class);
+        
+           
               
         // yield MenuItem::linkToCrud('Galerie', 'fas fa-list', Galerie::class);
     }

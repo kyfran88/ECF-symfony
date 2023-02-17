@@ -4,24 +4,63 @@
 
 {% block body %}
 
-<section>
-<div class="container-fluid d-flex text-center">
-{% for item in galerie %}
-  <div class="row ">
-    <div class="col">
-      {{ item.titre }}
-         <img src="/images/{{ item.image }}"class="img-fluid img-images" alte="image" style="max-width: auto; height: 90%;">
+<section class="banniere" id="benniere">
+    <div class="contenu">
+    <h2>Le Quai Entique</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <a href="carte" class="btn1">LA CARTE & LE MENUS</a>  
+    <a href="reservation" class="btn2">Reservation</a>
     </div>
+</section> 
+
+
+
+<br>
+</br>
+<section class="imgs py-5">
+  <div class="container text-center">
+  {% for item in galerie %}
+    <div class="card mb-3" style="max-width: 100%;">
+     <div class="row g-0">
+      <div class="col-md-4">
+     {{ item.titre }}
+        <img src="/images/{{ item.image }}" class="img-fluid rounded-start" alt="image">
+    </div>
+      <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Avec Nos spécialités </h5>
+        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+           <img src="photos/image11.jpg" class="d-block w-100" alt="image">
+       </div>
+         <div class="carousel-item">
+           <img src="photos/image17.jpg" class="d-block w-100" alt="image">
+       </div>
+          <div class="carousel-item">
+           <img src="photos/image16.jpg" class="d-block w-100" alt="image">
+       </div>
+     </div>
+     
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+      </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+         <span class="carousel-control-next-icon" aria-hidden="true"></span>
+         <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+      
+      </div>
+     </div>
   </div>
-{% endfor %}
 </div>
+{% endfor %}
+ </div>
 </section>
 
-<button type="button" class="btn btn-primary btn-lg mx-auto d-block" style="width: 700px; height: 100;">
-   <li class="nav-item">
-      <a class="nav-link" href="reservation">Reservation</a>
-   </li>
-</button>
 
 <br>
 </br>

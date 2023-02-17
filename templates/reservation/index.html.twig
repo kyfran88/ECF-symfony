@@ -1,20 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ReservationController!{% endblock %}
+{% block title %}Reservation{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<br>
+<br>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<form method="POST" action="reservation.php">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div class="form-group">
+                            <label for="reservation_date">Date</label>
+                            <input type="date" value="<?php echo (isset($_POST['reservation_date']))?$_POST['reservation_date']:date('Y-m-d',strtotime("+1day"));  ?>"
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div class="form-group">
+                            <label for="reservation_time">Time</label>
+                            <input type="time" value="<?php echo (isset($_POST['reservation_time']))?$_POST['reservation_time']:date('H:i');  ?>" class="form-control" name="reservation_time">
+                        </div>
+                    </div> 
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div class="form-group">
+                            <label for="couverts">How many people?</label>
+                            <select class="form-control" name="couverts">
+                                <option value="1" <?php echo (isset($_POST['couverts']))?"selected":"";  ?>
+                                    One person
+                                </option>
+                                <option value="2" <?php echo (isset($_POST['couverts']))?"selected":"";  ?>>Two people</option>
+                                <option value="3" <?php echo (isset($_POST['couverts']))?"selected":"";  ?>>Three people</option>
+                                <option value="4" <?php echo (isset($_POST['couverts']))?"selected":"";  ?>>Four people</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div class="form-group">
+                            <label for="check_availability" style="visibility: hidden;">Check Availability</label>
+                            <input type="submit" class="form-control check_availability_submit" name="check_availability_submit">
+                        </div>
+                    </div>
+                </div>
+            </form>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/apps/symfony/src/Controller/ReservationController.php'|file_link(0) }}">src/Controller/ReservationController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/apps/symfony/templates/reservation/index.html.twig'|file_link(0) }}">templates/reservation/index.html.twig</a></code></li>
-    </ul>
-</div>
+
 {% endblock %}

@@ -10,10 +10,6 @@ app_reservation:
     path: /reservation
     controller: App\Controller\ReservationController::index
 
-app_carte_et_menus:
-    path: /carte/et/menus
-    controller: App\Controller\CarteEtMenusController::index
-
 app_home:
     path: /
     controller: App\Controller\HomeController::index

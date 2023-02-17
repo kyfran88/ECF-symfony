@@ -19,21 +19,29 @@ class Clients
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $telephone = null;
+    private ?string $prenom = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $telephnone = null;
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
-    #[ORM\OneToMany(mappedBy: 'clients', targetEntity: CommandesPassée::class, orphanRemoval: true)]
-    private Collection $CommandesPassée;
+    #[ORM\Column(length: 255)]
+    private ?string $password = null;
 
-    #[ORM\OneToMany(mappedBy: 'clients', targetEntity: MentionAllergies::class, orphanRemoval: true)]
-    private Collection $MentionAllergies;
+    #[ORM\Column(length: 255)]
+    private ?string $nbr_couverts_par_defaut = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $mention_allergies = null;
+
+    #[ORM\OneToMany(mappedBy: 'clients', targetEntity: reservations::class, orphanRemoval: true)]
+    private Collection $reservations;
 
     public function __construct()
     {
-        $this->CommandesPassée = new ArrayCollection();
-        $this->MentionAllergies = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -53,14 +61,26 @@ class Clients
         return $this;
     }
 
-    public function getTelephone(): ?string
+    public function getPrenom(): ?string
     {
-        return $this->telephone;
+        return $this->prenom;
     }
 
-    public function setTelephone(string $telephone): self
+    public function setPrenom(string $prenom): self
     {
-        $this->telephone = $telephone;
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getTelephnone(): ?string
+    {
+        return $this->telephnone;
+    }
+
+    public function setTelephnone(string $telephnone): self
+    {
+        $this->telephnone = $telephnone;
 
         return $this;
     }
@@ -77,60 +97,66 @@ class Clients
         return $this;
     }
 
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    public function getNbrCouvertsParDefaut(): ?string
+    {
+        return $this->nbr_couverts_par_defaut;
+    }
+
+    public function setNbrCouvertsParDefaut(string $nbr_couverts_par_defaut): self
+    {
+        $this->nbr_couverts_par_defaut = $nbr_couverts_par_defaut;
+
+        return $this;
+    }
+
+    public function getMentionAllergies(): ?string
+    {
+        return $this->mention_allergies;
+    }
+
+    public function setMentionAllergies(string $mention_allergies): self
+    {
+        $this->mention_allergies = $mention_allergies;
+
+        return $this;
+    }
+
     /**
-     * @return Collection<int, CommandesPassée>
+     * @return Collection<int, reservations>
      */
-    public function getCommandesPassée(): Collection
+    public function getReservations(): Collection
     {
-        return $this->CommandesPassée;
+        return $this->reservations;
     }
 
-    public function addCommandesPassE(CommandesPassée $commandesPassE): self
+    public function addReservation(reservations $reservation): self
     {
-        if (!$this->CommandesPassée->contains($commandesPassE)) {
-            $this->CommandesPassée->add($commandesPassE);
-            $commandesPassE->setClients($this);
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations->add($reservation);
+            $reservation->setClients($this);
         }
 
         return $this;
     }
 
-    public function removeCommandesPassE(CommandesPassée $commandesPassE): self
+    public function removeReservation(reservations $reservation): self
     {
-        if ($this->CommandesPassée->removeElement($commandesPassE)) {
+        if ($this->reservations->removeElement($reservation)) {
             // set the owning side to null (unless already changed)
-            if ($commandesPassE->getClients() === $this) {
-                $commandesPassE->setClients(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, MentionAllergies>
-     */
-    public function getMentionAllergies(): Collection
-    {
-        return $this->MentionAllergies;
-    }
-
-    public function addMentionAllergy(MentionAllergies $mentionAllergy): self
-    {
-        if (!$this->MentionAllergies->contains($mentionAllergy)) {
-            $this->MentionAllergies->add($mentionAllergy);
-            $mentionAllergy->setClients($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMentionAllergy(MentionAllergies $mentionAllergy): self
-    {
-        if ($this->MentionAllergies->removeElement($mentionAllergy)) {
-            // set the owning side to null (unless already changed)
-            if ($mentionAllergy->getClients() === $this) {
-                $mentionAllergy->setClients(null);
+            if ($reservation->getClients() === $this) {
+                $reservation->setClients(null);
             }
         }
 

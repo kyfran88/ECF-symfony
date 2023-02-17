@@ -22,7 +22,10 @@ class HomeController extends AbstractController
 
         $galerie = $this->entityManager->getRepository(Galerie::class)->findAll();
         return $this->render('home/index.html.twig',[
-            'galerie' =>$galerie
+            'galerie' =>$galerie,
+            
         ]);
+            
+    
     }
 }

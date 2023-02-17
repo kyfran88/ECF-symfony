@@ -2,23 +2,107 @@
 
 *{
     font-family: 'Inter', sans-serif;
+    
+    
 }
 
 .nav-link{
     color: white !important;
+    
 }
 
 .nav-link:hover{
     color: greenyellow !important;
 }
-
-@media screen and (min-width:874px) {
-    h1 {
-        color: blue;
-        text-align: center;
-        font-size: 3rem;
-    }
+.btn1 {
+    font-size: 1rm;
+    color: #fff;
+    padding: 10px 20px !important;
+    background: orange !important;
+    display: inline-block !important;
+    margin-top: 20px !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    transition: 0.5s !important;
+    margin-left: 10px !important;
 }
+.btn2 {
+    font-size: 1rm;
+    color: #fff;
+    padding: 10px 20px !important;
+    background: gray !important;
+    display: inline-block !important;
+    margin-top: 20px !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    transition: 0.5s !important;
+    margin-left: 10px !important;
+}
+.btn3 {
+    font-size: 1rm;
+    color: #fff;
+    padding: 10px 20px !important;
+    background: orange !important;
+    display: inline-block !important;
+    margin-top: 20px !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    transition: 0.5s !important;
+    margin-left: 10px !important;
+    
+}
+
+.banniere {
+    position: relative !important;
+    width: 100% !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-image: url(/photos/image1.jpg);
+    background-size: cover !important;
+
+}
+.btn1:hover {
+    letter-spacing: 4px !important;
+}
+
+.btn2:hover {
+    letter-spacing: 4px !important;
+}
+
+.btn3:hover {
+    letter-spacing: 4px !important;
+}
+
+
+.banniere .contenu {
+    max-width: 70% !important;
+    text-align: center !important;
+}
+
+.banniere .contenu h2 {
+    font-size: 3rem !important;
+    text-transform: capitalize !important;
+}
+
+.contenu p:nth-child(2){
+    font-size: 1.2em !important;
+}
+
+.imbox {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+}
+
+
+
+
+
 
 
 

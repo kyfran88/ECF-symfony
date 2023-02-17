@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ReservationController extends AbstractController
 {
+    
     #[Route('/reservation', name: 'app_reservation')]
     public function index(): Response
     {
@@ -16,3 +17,5 @@ class ReservationController extends AbstractController
         ]);
     }
 }
+  
+
