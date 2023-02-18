@@ -7,39 +7,42 @@
 <br>
 
 <form method="POST" action="reservation.php">
+               <div class="container text-center "
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                    <div class="col col-lg-12">
                         <div class="form-group">
                             <label for="reservation_date">Date</label>
                             <input type="date" value="<?php echo (isset($_POST['reservation_date']))?$_POST['reservation_date']:date('Y-m-d',strtotime("+1day"));  ?>"
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                    <div class="col col-lg-2">
                         <div class="form-group">
-                            <label for="reservation_time">Time</label>
+                            <label for="reservation_time">Heure</label>
                             <input type="time" value="<?php echo (isset($_POST['reservation_time']))?$_POST['reservation_time']:date('H:i');  ?>" class="form-control" name="reservation_time">
                         </div>
                     </div> 
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                    <div class="col col-lg-12">
                         <div class="form-group">
-                            <label for="couverts">How many people?</label>
+                            <label for="couverts">Nombres de couverts</label>
                             <select class="form-control" name="couverts">
                                 <option value="1" <?php echo (isset($_POST['couverts']))?"selected":"";  ?>
-                                    One person
+                                    une persone
                                 </option>
-                                <option value="2" <?php echo (isset($_POST['couverts']))?"selected":"";  ?>>Two people</option>
-                                <option value="3" <?php echo (isset($_POST['couverts']))?"selected":"";  ?>>Three people</option>
-                                <option value="4" <?php echo (isset($_POST['couverts']))?"selected":"";  ?>>Four people</option>
+                                <option value="2" <?php echo (isset($_POST['couverts']))?"selected":"";  ?>2 persones</option>
+                                <option value="3" <?php echo (isset($_POST['couverts']))?"selected":"";  ?>3 persones</option>
+                                <option value="4" <?php echo (isset($_POST['couverts']))?"selected":"";  ?>4 persones</option>
                             </select>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                    <div class="col">
                         <div class="form-group">
                             <label for="check_availability" style="visibility: hidden;">Check Availability</label>
                             <input type="submit" class="form-control check_availability_submit" name="check_availability_submit">
                         </div>
                     </div>
                 </div>
+                </div>
+                
             </form>
 
 
