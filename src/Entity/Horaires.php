@@ -36,9 +36,7 @@ class Horaires
     #[ORM\JoinColumn(nullable: false)]
     private ?Reservations $reservations = null;
 
-    #[ORM\ManyToOne(inversedBy: 'horaires')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Restaurant $restaurant = null;
+    
 
     public function getId(): ?int
     {
@@ -129,15 +127,4 @@ class Horaires
         return $this;
     }
 
-    public function getRestaurant(): ?Restaurant
-    {
-        return $this->restaurant;
-    }
-
-    public function setRestaurant(?Restaurant $restaurant): self
-    {
-        $this->restaurant = $restaurant;
-
-        return $this;
-    }
 }
