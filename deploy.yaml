@@ -1,0 +1,14 @@
+import: 
+  - recipe/symfony.php
+
+config:
+  repository: 'https://github.com/kyfran88/ECF-symfony.git'
+
+hosts:
+
+tasks:
+  build:
+    - run: uptime  
+
+after:
+  deploy:failed: deploy:unlock
