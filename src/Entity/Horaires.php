@@ -32,10 +32,6 @@ class Horaires
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $heure_fermeture_pm = null;
 
-    #[ORM\ManyToOne(inversedBy: 'horaires')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Reservations $reservations = null;
-
     
 
     public function getId(): ?int
@@ -111,18 +107,6 @@ class Horaires
     public function setHeureFermeturePm(?\DateTimeInterface $heure_fermeture_pm): self
     {
         $this->heure_fermeture_pm = $heure_fermeture_pm;
-
-        return $this;
-    }
-
-    public function getReservations(): ?Reservations
-    {
-        return $this->reservations;
-    }
-
-    public function setReservations(?Reservations $reservations): self
-    {
-        $this->reservations = $reservations;
 
         return $this;
     }
